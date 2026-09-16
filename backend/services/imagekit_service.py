@@ -1,6 +1,6 @@
 from imagekitio import ImageKit
 
-from config import IMAGEKIT_PRIVATE_KEY, IMAGEKIT_URL_ENDPOINT
+from ..config import IMAGEKIT_PRIVATE_KEY, IMAGEKIT_URL_ENDPOINT
 
 imagekit = ImageKit(private_key=IMAGEKIT_PRIVATE_KEY)
 
