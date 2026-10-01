@@ -35,7 +35,7 @@ async def generate_single_thumbnail(thumbnail_id:str, prompt:str, headshot_url: 
         url = upload_file(
            file_bytes=image_byte,
            file_name=f"{thumbnail_id}.png",
-           folder_path=f"thumbnails/{job_id}/",
+           folder=f"thumbnails/{job_id}/",
         )
             # DB call save the url + mark uploaded
         with Session(engine) as session:
@@ -69,7 +69,7 @@ async def process_job(job_id:str):
         session.commit()
 
         thumbnails = session.exec(
-           select(Thumbnail).where(Thumbnail.jobid == job_id)
+           select(Thumbnail).where(Thumbnail.job_id == job_id)
         ).all()
         thumbnails_ids = [t.id for t in thumbnails]
 
@@ -82,7 +82,7 @@ async def process_job(job_id:str):
         with Session(engine) as session:
             thumbnails = session.exec(
             select(Thumbnail).where(Thumbnail.jobid == job_id)).all()
-            all_failed = all(t.status == "failed" for t in thumbnails)
+            all_failed = all(t.status == "error" for t in thumbnails)
             job = session.get(Job, job_id)
             job.status = "failed" if all_failed else "completed"
             session.add(job)
