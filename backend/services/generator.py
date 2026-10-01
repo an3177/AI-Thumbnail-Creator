@@ -74,7 +74,7 @@ async def process_job(job_id:str):
         thumbnails_ids = [t.id for t in thumbnails]
 
         tasks = [
-           generate_single_thumbnail(tid, prompt, headshot_url) for tid in thumbnail_ids
+           generate_single_thumbnail(tid, prompt, headshot_url) for tid in thumbnails_ids
         ]
 
         await asyncio.gather(*tasks, return_exceptions=True)
