@@ -14,7 +14,7 @@ async def generate_thumbnail(prompt: str, style_prompt:str, headshot_url:str) ->
     full_prompt = (
         f"{style_prompt}\n\n"
         f"User request: {prompt}\n\n"
-        "IMPORTANT: The generated thumbnail MUST prominently feature the person"
+        "IMPORTANT: The generated thumbnail MUST prominently feature the person "
         "shown in the provided reference headshot photo. Keep their likeness accurate"
     )
 
