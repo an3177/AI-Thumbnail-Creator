@@ -81,7 +81,7 @@ async def process_job(job_id:str):
 
         with Session(engine) as session:
             thumbnails = session.exec(
-            select(Thumbnail).where(Thumbnail.jobid == job_id)).all()
+            select(Thumbnail).where(Thumbnail.job_id == job_id)).all()
             all_failed = all(t.status == "error" for t in thumbnails)
             job = session.get(Job, job_id)
             job.status = "failed" if all_failed else "completed"
