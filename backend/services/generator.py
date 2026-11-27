@@ -10,7 +10,9 @@ from services.imagekit_service import upload_file
 logger = logging.getLogger(__name__)
 
 STYLES = {
-    #add later
+    "minimalist": "Clean, simple design",
+    "cinematic": "Dramatic lighting and composition",
+    "vibrant": "Bright colors and bold typography"
 }
 
 STYLE_ORDER =[]
